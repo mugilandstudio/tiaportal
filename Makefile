@@ -1,6 +1,9 @@
-#
+# serverをコンパイルする
+.PHONY: build
+build:
+	go build -o bin/tia cmd/tia.go
+
 # protocを実行する。
-#
 .PHONY: proto
 proto:
 	protoc -I./proto/ \
