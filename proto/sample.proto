@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package tiaportal;
+option go_package = "github.com/mugilandstudio/tiaportal/proto";
+
+import "google/api/annotations.proto";
+
+// SampleService はSample用のサービスです。
+service SampleService {
+    rpc Echo(EchoRequest) returns (EchoResponse) {
+        option (google.api.http) = {
+            post: "/sample/echo"
+            body: "*"
+        };
+    }
+}
+
+// EchoRequest はEcho用のリクエストメッセージです。
+message EchoRequest {
+}
+
+// EchoResponse はEcho用のレスポンスメッセージです。
+message EchoResponse {
+}
