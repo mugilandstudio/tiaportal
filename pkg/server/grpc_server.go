@@ -11,22 +11,21 @@ import (
 	"google.golang.org/grpc"
 )
 
-type Server struct {
+type GRPCServer struct {
 }
 
-// New はコンストラクタです。
-func New() *Server {
-	return &Server{}
+func NewGRPCServer() *GRPCServer {
+	return &GRPCServer{}
 }
 
 // Start はServerを開始します。
-func (s *Server) Start() error {
-	log.Printf("Start Server")
+func (s *GRPCServer) Start() error {
+	log.Printf("Start gRPC Server")
 	srv := grpc.NewServer()
 	if err := s.initializeServices(srv); err != nil {
 		return err
 	}
-	ln, err := net.Listen("tcp", ":8081")
+	ln, err := net.Listen("tcp", ":9000")
 	if err != nil {
 		return err
 	}
@@ -43,7 +42,7 @@ func (s *Server) Start() error {
 	}
 }
 
-func (s *Server) initializeServices(srv *grpc.Server) error {
+func (s *GRPCServer) initializeServices(srv *grpc.Server) error {
 	if err := service.RegisterSampleService(srv); err != nil {
 		return err
 	}

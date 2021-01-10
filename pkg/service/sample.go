@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"log"
 
 	pb "github.com/mugilandstudio/tiaportal/proto"
 	"google.golang.org/grpc"
@@ -25,5 +26,6 @@ func NewSampleService() (*SampleService, error) {
 }
 
 func (s *SampleService) Echo(ctx context.Context, req *pb.EchoRequest) (*pb.EchoResponse, error) {
+	log.Printf("Echo")
 	return &pb.EchoResponse{}, nil
 }
