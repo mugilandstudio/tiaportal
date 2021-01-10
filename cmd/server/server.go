@@ -1,6 +1,8 @@
 package server
 
 import (
+	"log"
+
 	"github.com/mugilandstudio/tiaportal/pkg/server"
 	"github.com/spf13/cobra"
 )
@@ -15,7 +17,9 @@ var (
 		Use:   "start",
 		Short: "serverを起動します。",
 		Run: func(cmd *cobra.Command, args []string) {
-			srv.Start()
+			if err := srv.Start(); err != nil {
+				log.Fatalf("Failed start server: %v", err)
+			}
 		},
 	}
 )
