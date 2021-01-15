@@ -16,4 +16,6 @@ proto:
      	--grpc-gateway_opt=logtostderr=true \
      	--grpc-gateway_opt=paths=source_relative \
      	--grpc-gateway_opt=generate_unbound_methods=true \
+		--js_out=import_style=commonjs:./proto \
+		--grpc-web_out=import_style=commonjs,mode=grpcwebtext:./proto \
 		./proto/*.proto 
